@@ -31,7 +31,7 @@ function typeEffect() {
 
 typeEffect(); // Mulai efek
 
-// ========== 2. GENERATE PROJECT CARDS ==========
+// ========== 2. GENERATE PROJECT CARD ==========
 const projects = [
     { 
         title: 'Website Profil', 

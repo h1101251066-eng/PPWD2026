@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <title>konversi Suhu</title>
+    <head>
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif; max: width 400px; margin: 50px auto; padding: 20px; background: white; }
+            header { text-align: center; margin-bottom: 15px; }
+            header p { margin: 2px 0; color: #555; }
+            .konversi { background: gainsboro; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px;text-align: center;}
+            input {padding: 10px; margin: 5px; font-size: 16 px; width: 80%; box-sizing: border-box;}
+            button {padding: 10px 15px; margin: 5px; font-size: 16px; color: white; border: none; border-radius: 5px; cursor: pointer; }
+            .btn-konversi { background: #ff91f9; }
+            .btn-konversi:hover { background: #f46b99; }
+            .btn-reset { background: #FF8AE0; }
+            .hasil { font-size: 22px; font-weight: bold; color: #f46b99; margin-top: 20px;}
+            footer { text-align: center; margin-top: 15px; font-size: 13px; color: #555; }
+        </style>
+    </head>
+
+    <body>
+    <header>
+        <h1>Konverter Suhu</h1>
+        <p>Andini Salsabilla - H1101251066</p>
+    </header>
+
+    <main>
+        <section class="konversi">
+            <h2>Masukkan Suhu</h2>
+            <input type="number" id="suhu_H1101251066" placeholder="Masukkan nilai suhu">
+            <br>
+            <select id="satuan_H1101251066">
+                <option value="Celcius">Celsius</option>
+                <option value="Farenheit">Fahrenheit</option>
+                <option value="Kelvin">Kelvin</option>
+            </select>
+            <br>
+            <button class="btn-konversi" onclick="konversi_H1101251066()">Konversi</button>
+            <button class="btn-reset" onclick="reset_H1101251066()">Reset</button>
+
+            <div class="hasil">
+                Celsius: <span id="hasilCelsius_H1101251066">-</span><br>
+                Fahrenheit: <span id="hasilFarenheit_H1101251066">-</span><br>
+                Kelvin: <span id="hasilKelvin_H1101251066">-</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    function konversi_H1101251066() {
+        let nilai = document.getElementById('suhu_H1101251066').value;
+        let satuan = document.getElementById('satuan_H1101251066').value;
+
+        if (nilai === "") {
+            alert("SUHU TIDAK BOLEH KOSONG!");
+            return;
+        }
+        nilai = parseFloat(nilai);
+
+        let celsius, farenheit, kelvin;
+
+        if (satuan === "Celcius") {
+            celsius = nilai;
+            farenheit = (nilai * 9 / 5) + 32; //nilai yg diinpukan (celcius) dikali 9 dibagi 5
+            kelvin = nilai + 273.15; //nilai yg diinputkan (celcius) ditambah 273.15
+        } else if (satuan === "Farenheit") {
+            celsius = (nilai - 32) * 5 / 9; //nilai yg diinputkan (farenheit) dikurang 32 dikali 5 dibagi 9
+            farenheit = nilai;
+            kelvin = celsius + 273.15; //nilai yang diinputkan (farenheit) ditambah 273.15
+        } else if (satuan === "Kelvin") {
+            celsius = nilai - 273.15; //nilai yang diinputkan dikurang 273.15
+            farenheit = (celsius * 9 / 5) + 32; //nilai yg diinputkan dikali 9 dibagi5
+            kelvin = nilai;
+        }
+        document.getElementById('hasilCelsius_H1101251066').innerHTML = celsius;
+        document.getElementById('hasilFarenheit_H1101251066').innerHTML = farenheit;
+        document.getElementById('hasilKelvin_H1101251066').innerHTML = kelvin;
+    }
+    
+    function reset_H1101251066() {
+        document.getElementById('suhu_H1101251066').value = "";
+        document.getElementById('hasilCelsius_H1101251066').innerHTML = "-";
+        document.getElementById('hasilFarenheit_H1101251066').innerHTML = "-";
+        document.getElementById('hasilKelvin_H1101251066').innerHTML = "-";
+    }
+    </script>
+    </body>
+
+    <footer>
+        <p> UTS Pemrograman Web Dasar Andini Salsabilla </p>
+    </footer>
+</html>
